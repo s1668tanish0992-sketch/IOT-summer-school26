@@ -1,0 +1,21 @@
+const int sensorPin = A0;
+const float referenceVoltage = 5.0;
+const int adcResolution = 1023;
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(sensorPin, INPUT);
+}
+
+void loop()
+{
+  int sensorValue = analogRead(sensorPin);
+
+  float tempC = ((sensorValue * referenceVoltage) / adcResolution - 0.5) * 100;
+
+  Serial.print("Temperature: ");
+  Serial.println(tempC);
+
+  delay(1000);
+}
